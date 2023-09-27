@@ -2,9 +2,9 @@
 # This script updates the GitHub Leaderboard in the README.md file
 import requests
 from collections import defaultdict
-import os
-from dotenv import load_dotenv
-load_dotenv()
+# import os
+# from dotenv import load_dotenv
+# load_dotenv()
 
 # Define your GitHub repository and authentication token
 repository_owner = "Odion-Sonny"
