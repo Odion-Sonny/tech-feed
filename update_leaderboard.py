@@ -10,7 +10,7 @@ from collections import defaultdict
 repository_owner = "Odion-Sonny"
 repository_name = "tech-feed"
 # api_token = os.getenv("GITHUB_PAT")
-api_token = "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"
+api_token = "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"
 
 # Define the GitHub API endpoint for pull requests
 api_url = f"https://api.github.com/repos/{repository_owner}/{repository_name}/pulls"
