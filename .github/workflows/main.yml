@@ -1,0 +1,20 @@
+name: Update Leaderboard
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  update-leaderboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Update Leaderboard
+        run: |
+          # Add your script command here to update the leaderboard data
+          python update_leaderboard.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
