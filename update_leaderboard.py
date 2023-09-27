@@ -3,6 +3,7 @@
 import requests
 from collections import defaultdict
 import os
+from decouple import config
 # from dotenv import load_dotenv
 # load_dotenv()
 
@@ -10,7 +11,7 @@ import os
 repository_owner = "Odion-Sonny"
 repository_name = "tech-feed"
 # api_token = os.getenv("GITHUB_PAT")
-api_token = os.environ.get('API_TOKEN')
+api_token = config('API_TOKEN')
 # api_token = ""
 
 # Define the GitHub API endpoint for pull requests
