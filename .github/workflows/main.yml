@@ -33,3 +33,9 @@ jobs:
         run: |
           # Pass the API_TOKEN secret as an environment variable to your script
           python update_leaderboard.py
+      - name: Commit and Push Changes
+        run: |
+          git add README.md
+          git commit -m "Update leaderboard"
+          git push
+        
