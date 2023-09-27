@@ -16,13 +16,15 @@ jobs:
       - name: Use a secret
         env:
           MY_SECRET: ${{ secrets.api_token }}
-        run: |
-          echo "The secret value is $MY_SECRET"
+        run: echo $MY_SECRET
          
       - name: Update Leaderboard
         run: |
           # Pass the api_token secret as an environment variable to your script
-          export API_TOKEN=$MY_SECRET
+          export api_token=$MY_SECRET
           python update_leaderboard.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Debug Environment
+        run: |
+          env
