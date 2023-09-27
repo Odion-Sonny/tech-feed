@@ -26,8 +26,6 @@ jobs:
       - name: Use a secret
         env:
           API_TOKEN: ${{ secrets.API_TOKEN }}
-          EMAIL: ${{ secrets.EMAIL }}
-          USERNAME: ${{ secrets.USERNAME }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
         run: |
@@ -35,8 +33,8 @@ jobs:
           python update_leaderboard.py
       - name: Configure Git
         run: |
-          git config --global user.email $EMAIL
-          git config --global user.name $USERNAME
+          git config --global user.email "davidsonnyegbeahie@gmail.com"
+          git config --global user.name "Odion-Sonny"
         
       - name: Commit and Push Changes
         run: |
