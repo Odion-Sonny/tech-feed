@@ -9,9 +9,10 @@ on:
 jobs:
   update-leaderboard:
     runs-on: ubuntu-latest
+
     steps:
-      # - name: Check out code
-      #   uses: actions/checkout@v2
+      - name: Check out code
+        uses: actions/checkout@v2
         
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -21,12 +22,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt 
+          pip install -r requirements.txt
+
       - name: Use a secret
         env:
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+          API_TOKEN: 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
         run: |
           # echo "The secret value is $MY_SECRET"
+          API_TOKEN = $API_TOKEN
          
       - name: Update Leaderboard
         env:
