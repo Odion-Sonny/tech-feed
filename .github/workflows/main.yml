@@ -23,6 +23,7 @@ jobs:
           python -m pip install --upgrade pip
           # pip install -r requirements.txt
           pip install python-decouple==3.8
+          pip install requests==2.31.0
 
       - name: Use a secret
         env:
