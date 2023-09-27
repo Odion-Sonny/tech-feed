@@ -2,7 +2,7 @@
 # This script updates the GitHub Leaderboard in the README.md file
 import requests
 from collections import defaultdict
-# import os
+import os
 # from dotenv import load_dotenv
 # load_dotenv()
 
@@ -10,7 +10,8 @@ from collections import defaultdict
 repository_owner = "Odion-Sonny"
 repository_name = "tech-feed"
 # api_token = os.getenv("GITHUB_PAT")
-api_token = "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"
+api_token = os.getenv("API_TOKEN")
+# api_token = "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"
 
 # Define the GitHub API endpoint for pull requests
 api_url = f"https://api.github.com/repos/{repository_owner}/{repository_name}/pulls"
