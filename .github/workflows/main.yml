@@ -5,7 +5,6 @@ on:
     types:
       - closed
 
-
 jobs:
   update-leaderboard:
     runs-on: ubuntu-latest
@@ -22,18 +21,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          # pip install -r requirements.txt
+          pip install python-decouple==3.8
 
       - name: Use a secret
         env:
-          API_TOKEN: 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
-        run: |
-          # echo "The secret value is $MY_SECRET"
-          API_TOKEN = $API_TOKEN
-         
-      - name: Update Leaderboard
-        env:
+          API_TOKEN: ${{ secrets.API_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
         run: |
-          # Pass the api_token secret as an environment variable to your script
+          # Pass the API_TOKEN secret as an environment variable to your script
           python update_leaderboard.py
