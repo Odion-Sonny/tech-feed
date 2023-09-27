@@ -13,17 +13,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
        
-      - name: Use a secret
-        env:
-          MY_SECRET: ${{ secrets.API_TOKEN }}
-        run: echo $MY_SECRET
          
       - name: Update Leaderboard
+        env:
+          MY_SECRET: ${{ secrets.API_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Pass the api_token secret as an environment variable to your script
           python update_leaderboard.py
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Debug Environment
-        run: |
-          env

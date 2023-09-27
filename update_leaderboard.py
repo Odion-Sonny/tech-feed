@@ -12,7 +12,7 @@ repository_name = "tech-feed"
 # api_token = os.getenv("GITHUB_PAT")
 api_token = os.environ.get('MY_SECRET')
 print(api_token)
-# api_token = "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"
+# api_token = "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"
 
 # Define the GitHub API endpoint for pull requests
 api_url = f"https://api.github.com/repos/{repository_owner}/{repository_name}/pulls"
