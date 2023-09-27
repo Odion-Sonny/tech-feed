@@ -10,7 +10,7 @@ import os
 repository_owner = "Odion-Sonny"
 repository_name = "tech-feed"
 # api_token = os.getenv("GITHUB_PAT")
-api_token = os.getenv("api_token")
+api_token = os.environ.get('MY_SECRET')
 print(api_token)
 # api_token = "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"
 
