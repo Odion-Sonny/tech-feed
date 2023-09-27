@@ -3,5 +3,5 @@
 
 | Rank | Contributor | Merged PRs |
 | ---- | ----------- | ---------- |
-| 1 | @ChinweA | 2 |
-| 2 | @Odion-Sonny | 1 |
+| 1 | @Odion-Sonny | 2 |
+| 2 | @ChinweA | 2 |
