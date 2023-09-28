@@ -43,7 +43,7 @@ def get_sorted_pr():
         # Iterate through the pull_requests list
         for pr in pull_requests:
             # Check if the pull request was merged and get the username of the user who merged it
-            if pr['state'] == 'closed' and pr['merged_at']:
+            if pr['merged_at']:
                 pr_by = pr['user']['login']
                 # Increment the count of merged pull requests for this user
                 merged_prs_count_by_user[pr_by] += 1
@@ -66,7 +66,7 @@ def leaderboard_data():
     leaderboard_data = []
     rank = 1
     for user, count in sorted_users:
-        leaderboard_data.append({"rank":rank, "contributor": f"{user}", "merged_prs": f"{count}"})
+        leaderboard_data.append({"rank":rank, "contributor": f"[{user}](https://github.com/{user})", "merged_prs": f"{count}"})
         rank += 1
     return leaderboard_data
 
@@ -79,7 +79,7 @@ markdown_content = """
 | ---- | ----------- | ---------- |
 {}
 """.format("\n".join(
-    f"| {entry['rank']} | @{entry['contributor']} | {entry['merged_prs']} |"
+    f"| {entry['rank']} | {entry['contributor']} | {entry['merged_prs']} |"
     for entry in leaderboard_data
 ))
 
