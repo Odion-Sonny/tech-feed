@@ -35,10 +35,20 @@ jobs:
         run: |
           git config --global user.email "davidsonnyegbeahie@gmail.com"
           git config --global user.name "Odion-Sonny"
-        
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --exit-code || echo "::set-output name=changes::true"
+            
       - name: Commit and Push Changes
+        if: steps.check_changes.outputs.changes == 'true'
         run: |
           git add README.md
           git commit -m "Update leaderboard"
           git push
-        
+      # - name: Commit and Push Changes
+      #   run: |
+      #     git add README.md
+      #     git commit -m "Update leaderboard"
+      #     git push
