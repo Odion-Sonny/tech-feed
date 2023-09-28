@@ -9,6 +9,7 @@ on:
 #   push:
 #     branches:
 #       - main  # Replace with the branch you want to trigger the workflow on
+permissions: write-all 
 
 jobs:
   update-leaderboard:
@@ -30,7 +31,7 @@ jobs:
 
       - name: Use a secret
         env:
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+          
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
         run: |

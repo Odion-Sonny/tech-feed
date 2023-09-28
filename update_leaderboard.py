@@ -8,7 +8,7 @@ def initialize_api():
     # Define your GitHub repository and authentication token
     repository_owner = "Odion-Sonny"
     repository_name = "tech-feed"
-    api_token = os.environ.get("API_TOKEN")
+    api_token = os.environ.get("GITHUB_TOKEN")
     # api_token = ""
 
     # Define the GitHub API endpoint for pull requests
