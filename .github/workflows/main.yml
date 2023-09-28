@@ -5,16 +5,55 @@ on:
     types:
       - closed
 
+# on:
+#   push:
+#     branches:
+#       - main  # Replace with the branch you want to trigger the workflow on
+
 jobs:
   update-leaderboard:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out code
         uses: actions/checkout@v2
+        
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
 
-      - name: Update Leaderboard
+      - name: Install dependencies
         run: |
-          # Add your script command here to update the leaderboard data
-          python update_leaderboard.py
+          python -m pip install --upgrade pip
+          pip install requests==2.31.0
+
+      - name: Use a secret
         env:
+          API_TOKEN: ${{ secrets.API_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+        run: |
+          # Pass the API_TOKEN secret as an environment variable to your script
+          python update_leaderboard.py
+      - name: Configure Git
+        run: |
+          git config --global user.email "davidsonnyegbeahie@gmail.com"
+          git config --global user.name "Odion-Sonny"
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --exit-code || echo "::set-output name=changes::true"
+            
+      - name: Commit and Push Changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git add README.md
+          git commit -m "Update leaderboard"
+          git push
+      # - name: Commit and Push Changes
+      #   run: |
+      #     git add README.md
+      #     git commit -m "Update leaderboard"
+      #     git push
