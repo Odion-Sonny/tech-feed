@@ -48,8 +48,3 @@ jobs:
           git add README.md
           git commit -m "Update leaderboard"
           git push
-      # - name: Commit and Push Changes
-      #   run: |
-      #     git add README.md
-      #     git commit -m "Update leaderboard"
-      #     git push

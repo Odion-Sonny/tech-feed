@@ -92,9 +92,14 @@ leaderboard_data = leaderboard_data()
 markdown_content = """
 # GitHub Leaderboard
 
+Welcome to the Official Leaderboard, showcasing our top contributors and their impressive contributions.
+
 | Rank || Contributor | Merged PRs |
 | ---- | -- |----------- | ---------- |
 {}
+
+Thank you to all our fantastic contributors for their hard work and dedication!
+
 """.format("\n".join(
     f"| {entry['rank']} | {entry['avi']} | {entry['contributor']} | {entry['merged_prs']} |"
     for entry in leaderboard_data
