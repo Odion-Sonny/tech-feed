@@ -1,4 +1,4 @@
-
+<!-- Section Start -->
 # GitHub Leaderboard
 
 Welcome to the Official Leaderboard, showcasing our top contributors and their impressive contributions.
@@ -10,3 +10,4 @@ Welcome to the Official Leaderboard, showcasing our top contributors and their i
 
 Thank you to all our fantastic contributors for their hard work and dedication!
 
+<!-- Section End -->

@@ -9,7 +9,7 @@ def initialize_api():
     repository_owner = "Odion-Sonny"
     repository_name = "tech-feed"
     api_token = os.environ.get("GITHUB_TOKEN")
-    # api_token = ""
+    api_token = ""
 
     # Define the GitHub API endpoint for pull requests
     api_url = f"https://api.github.com/repos/{repository_owner}/{repository_name}/pulls"
@@ -117,8 +117,62 @@ Thank you to all our fantastic contributors for their hard work and dedication!
 ))
 
 # Write the Markdown content to README.md
-with open("README.md", "w") as readme_file:
-    readme_file.write(markdown_content)
-    print("successfully updated README.md")
+# with open("README.md", "w") as readme_file:
+#     readme_file.write(markdown_content)
+#     print("successfully updated README.md")
 
 
+def update_readme_section(readme_path, section_start, section_end, new_content):
+    """
+    Update a specific section within a file without replacing section markers.
+
+    Args:
+        readme_path (str): The path to the README file.
+        section_start (str): The start marker for the section to be updated.
+        section_end (str): The end marker for the section to be updated.
+        new_content (str): The new content to insert into the section.
+
+    Returns:
+        bool: True if the section was successfully updated, False otherwise.
+    """
+    try:
+        # Step 1: Open and read the README file
+        with open(readme_path, 'r') as file:
+            readme_contents = file.read()
+
+        # Step 2: Locate the section to update
+        section_start_index = readme_contents.find(section_start)
+        section_end_index = readme_contents.find(section_end)
+
+        if section_start_index == -1 or section_end_index == -1 or section_start_index >= section_end_index:
+            # Section not found or invalid markers, return False
+            return False
+
+        # Step 3: Update the section content
+        updated_section = section_start + new_content + section_end
+        updated_readme_contents = (
+            readme_contents[:section_start_index] +
+            updated_section +
+            readme_contents[section_end_index + len(section_end):]
+        )
+
+        # Step 4: Write the updated contents back to the file
+        with open(readme_path, 'w') as file:
+            file.write(updated_readme_contents)
+
+        return True  # Section updated successfully
+
+    except Exception as e:
+        # Handle exceptions (e.g., file not found, file permissions)
+        print(f"An error occurred: {e}")
+        return False
+# Example usage:
+readme_path = 'README.md'
+section_start = "<!-- Section Start -->"
+section_end = "<!-- Section End -->"
+new_content = markdown_content
+
+if update_readme_section(readme_path, section_start, section_end, new_content):
+    print("Section updated successfully.")
+else:
+    print("Section update failed.")
